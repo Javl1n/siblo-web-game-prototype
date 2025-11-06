@@ -34,8 +34,8 @@ export class GameEngine {
   }
 
   private async init(): Promise<void> {
-    // Create some example decorative sprites (stars)
-    this.createStars();
+    // Create grasslands background
+    this.createGrasslands();
 
     // Load and create player sprite
     await this.loadPlayer();
@@ -70,6 +70,9 @@ export class GameEngine {
 
       // Create textures for each frame based on JSON data
       const frameTextures: Map<string, PIXI.Texture> = new Map();
+
+      // Disable texture smoothing for crisp pixel art
+      baseTexture.source.scaleMode = 'nearest';
 
       for (const [frameName, frameData] of Object.entries(spriteData.frames)) {
         const frame = (frameData as any).frame;
@@ -109,7 +112,7 @@ export class GameEngine {
       this.playerSprite = animatedSprite;
 
       // Scale up pixel art for better visibility
-      this.playerSprite.scale.set(3);
+      this.playerSprite.scale.set(2);
 
       // Add to stage
       this.app.stage.addChild(this.playerSprite);
@@ -130,14 +133,124 @@ export class GameEngine {
     }
   }
 
-  private createStars(): void {
-    for (let i = 0; i < 50; i++) {
-      const star = new PIXI.Graphics();
-      star.circle(0, 0, Math.random() * 3 + 1);
-      star.fill({ color: 0xffffff, alpha: Math.random() * 0.5 + 0.3 });
-      star.x = Math.random() * this.app.screen.width;
-      star.y = Math.random() * this.app.screen.height;
-      this.app.stage.addChild(star);
+  private createGrasslands(): void {
+    const width = this.app.screen.width;
+    const height = this.app.screen.height;
+
+    // Create base grass layer (entire screen)
+    const grassBase = new PIXI.Graphics();
+    grassBase.rect(0, 0, width, height);
+    grassBase.fill({ color: 0x6BAA4A });
+    this.app.stage.addChild(grassBase);
+
+    // Add darker grass patches for depth
+    for (let i = 0; i < 15; i++) {
+      const patch = new PIXI.Graphics();
+      const x = Math.random() * width;
+      const y = Math.random() * height;
+      const size = Math.random() * 80 + 40;
+
+      patch.circle(x, y, size);
+      patch.fill({ color: 0x5a9e4a, alpha: 0.3 });
+      this.app.stage.addChild(patch);
+    }
+
+    // Add lighter grass patches
+    for (let i = 0; i < 10; i++) {
+      const patch = new PIXI.Graphics();
+      const x = Math.random() * width;
+      const y = Math.random() * height;
+      const size = Math.random() * 60 + 30;
+
+      patch.circle(x, y, size);
+      patch.fill({ color: 0x7bc055, alpha: 0.3 });
+      this.app.stage.addChild(patch);
+    }
+
+    // Add dirt paths (diagonal)
+    for (let i = 0; i < 3; i++) {
+      const path = new PIXI.Graphics();
+      const startX = Math.random() * width * 0.5;
+      const startY = Math.random() * height;
+      const endX = startX + width * 0.6;
+      const endY = (startY + height * 0.3) % height;
+      const pathWidth = Math.random() * 40 + 30;
+
+      // Create path using lines
+      for (let j = 0; j < 20; j++) {
+        const t = j / 20;
+        const x = startX + (endX - startX) * t;
+        const y = startY + (endY - startY) * t;
+        path.circle(x, y, pathWidth);
+      }
+      path.fill({ color: 0x8B7355, alpha: 0.4 });
+      this.app.stage.addChild(path);
+    }
+
+    // Add small grass tufts scattered around
+    for (let i = 0; i < 150; i++) {
+      const tuft = new PIXI.Graphics();
+      const x = Math.random() * width;
+      const y = Math.random() * height;
+      const size = Math.random() * 3 + 1;
+
+      // Draw small grass tuft (3 tiny lines)
+      for (let j = 0; j < 3; j++) {
+        const angle = (j - 1) * 0.3;
+        tuft.moveTo(x, y);
+        tuft.lineTo(x + Math.cos(angle) * size, y + Math.sin(angle) * size);
+      }
+      tuft.stroke({ color: 0x4a8c3a, width: 1, alpha: Math.random() * 0.4 + 0.2 });
+      this.app.stage.addChild(tuft);
+    }
+
+    // Add small rocks
+    for (let i = 0; i < 20; i++) {
+      const rock = new PIXI.Graphics();
+      const x = Math.random() * width;
+      const y = Math.random() * height;
+      const size = Math.random() * 8 + 4;
+
+      rock.circle(x, y, size);
+      rock.fill({ color: 0x808080, alpha: 0.6 });
+      this.app.stage.addChild(rock);
+    }
+
+    // Add colorful flowers scattered around
+    for (let i = 0; i < 40; i++) {
+      const flower = new PIXI.Graphics();
+      const x = Math.random() * width;
+      const y = Math.random() * height;
+
+      // Draw flower petals (top-down view)
+      const colors = [0xff69b4, 0xffff00, 0xff6347, 0xffa500, 0x9370db];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      for (let j = 0; j < 5; j++) {
+        const angle = (j * Math.PI * 2) / 5;
+        const petalX = x + Math.cos(angle) * 4;
+        const petalY = y + Math.sin(angle) * 4;
+        flower.circle(petalX, petalY, 2.5);
+      }
+      flower.circle(x, y, 2);
+      flower.fill({ color: color, alpha: 0.8 });
+      this.app.stage.addChild(flower);
+    }
+
+    // Add small bushes/shrubs
+    for (let i = 0; i < 10; i++) {
+      const bush = new PIXI.Graphics();
+      const x = Math.random() * width;
+      const y = Math.random() * height;
+      const size = Math.random() * 15 + 10;
+
+      // Draw bush with overlapping circles
+      bush.circle(x, y, size);
+      bush.circle(x + size * 0.5, y, size * 0.8);
+      bush.circle(x - size * 0.5, y, size * 0.8);
+      bush.circle(x, y + size * 0.4, size * 0.7);
+      bush.fill({ color: 0x2d5a1e, alpha: 0.7 });
+      this.app.stage.addChild(bush);
     }
   }
 
@@ -210,10 +323,11 @@ export class GameEngine {
 
     // Handle left/right flipping for side animations
     if (this.lastDirection === 'side') {
-      this.playerSprite.scale.x = this.facingLeft ? -3 : 3;
+      this.playerSprite.scale.x = this.facingLeft ? -2 : 2;
     } else {
-      this.playerSprite.scale.x = 3;
+      this.playerSprite.scale.x = 2;
     }
+    this.playerSprite.scale.y = 2;
 
     // Play the appropriate animation
     this.playAnimation(animationName);

@@ -29,7 +29,7 @@ export const GameCanvas = ({ onGameStateChange }: GameCanvasProps) => {
       app = new PIXI.Application();
 
       await app.init({
-        background: '#1a1a2e',
+        background: '#6BAA4A',
         resizeTo: window,
         antialias: true,
         autoDensity: true,
