@@ -8,13 +8,22 @@ export class GameEngine {
   private app: PIXI.Application;
   private state: GameState;
   private playerSprite: PIXI.AnimatedSprite | null = null;
-  private playerSpeed = 5;
   private keys: { [key: string]: boolean } = {};
   private isInitialized = false;
   private animations: Map<string, PIXI.Texture[]> = new Map();
   private currentAnimation: string = 'forward_idle';
   private lastDirection: 'forward' | 'backward' | 'side' = 'forward';
   private facingLeft: boolean = false;
+
+  // Grid-based movement properties
+  private readonly gridSize = 64; // Size of each grid cell in pixels
+  private gridX = 0; // Current grid position X
+  private gridY = 0; // Current grid position Y
+  private isMoving = false; // Whether currently transitioning between cells
+  private targetX = 0; // Target pixel position X
+  private targetY = 0; // Target pixel position Y
+  private moveSpeed = 4; // Pixels per frame for grid movement
+  private keyPressed: { [key: string]: boolean } = {}; // Track if key was just pressed
 
   constructor(app: PIXI.Application) {
     this.app = app;
@@ -77,7 +86,7 @@ export class GameEngine {
         frameTextures.set(frameName, texture);
       }
 
-      // Create animations from JSON data
+      // Create animations from JSON data with ping-pong effect
       for (const [animName, frameNames] of Object.entries(spriteData.animations)) {
         const textures = (frameNames as string[]).map(frameName => {
           const texture = frameTextures.get(frameName);
@@ -88,7 +97,14 @@ export class GameEngine {
           return texture;
         }).filter(t => t !== null) as PIXI.Texture[];
 
-        this.animations.set(animName, textures);
+        // Create ping-pong animation: forward then backward (excluding last frame to avoid duplicate)
+        // Example: [1, 2, 3, 2] instead of [1, 2, 3]
+        const pingPongTextures = [...textures];
+        for (let i = textures.length - 2; i >= 1; i--) {
+          pingPongTextures.push(textures[i]);
+        }
+
+        this.animations.set(animName, pingPongTextures);
       }
 
       console.log(`Created ${this.animations.size} animations:`, Array.from(this.animations.keys()));
@@ -97,9 +113,16 @@ export class GameEngine {
       const initialTextures = this.animations.get('forward_idle') || [];
       const animatedSprite = new PIXI.AnimatedSprite(initialTextures);
       animatedSprite.anchor.set(0.5);
-      animatedSprite.x = this.app.screen.width / 2;
-      animatedSprite.y = this.app.screen.height / 2;
-      animatedSprite.animationSpeed = 0.15;
+
+      // Initialize grid position to center of screen
+      this.gridX = Math.floor(this.app.screen.width / 2 / this.gridSize);
+      this.gridY = Math.floor(this.app.screen.height / 2 / this.gridSize);
+      this.targetX = this.gridX * this.gridSize + this.gridSize / 2;
+      this.targetY = this.gridY * this.gridSize + this.gridSize / 2;
+
+      animatedSprite.x = this.targetX;
+      animatedSprite.y = this.targetY;
+      animatedSprite.animationSpeed = 0.08;
       animatedSprite.play();
 
       this.playerSprite = animatedSprite;
@@ -200,11 +223,15 @@ export class GameEngine {
 
   private setupKeyboardControls(): void {
     window.addEventListener('keydown', (e) => {
+      if (!this.keys[e.key]) {
+        this.keyPressed[e.key] = true;
+      }
       this.keys[e.key] = true;
     });
 
     window.addEventListener('keyup', (e) => {
       this.keys[e.key] = false;
+      this.keyPressed[e.key] = false;
     });
   }
 
@@ -225,45 +252,85 @@ export class GameEngine {
   public update(deltaTime: number): void {
     if (!this.state.isRunning || !this.playerSprite || !this.isInitialized) return;
 
-    let moving = false;
-    let moveX = 0;
-    let moveY = 0;
+    // Check if any movement key is being held
+    const hasInput = this.keys['ArrowUp'] || this.keys['w'] ||
+                     this.keys['ArrowDown'] || this.keys['s'] ||
+                     this.keys['ArrowLeft'] || this.keys['a'] ||
+                     this.keys['ArrowRight'] || this.keys['d'];
 
-    // Track movement direction
-    if (this.keys['ArrowLeft'] || this.keys['a']) {
-      moveX -= this.playerSpeed;
-      moving = true;
-      this.facingLeft = true;
-      this.lastDirection = 'side';
-    }
-    if (this.keys['ArrowRight'] || this.keys['d']) {
-      moveX += this.playerSpeed;
-      moving = true;
-      this.facingLeft = false;
-      this.lastDirection = 'side';
-    }
-    if (this.keys['ArrowUp'] || this.keys['w']) {
-      moveY -= this.playerSpeed;
-      moving = true;
-      this.lastDirection = 'backward';
-    }
-    if (this.keys['ArrowDown'] || this.keys['s']) {
-      moveY += this.playerSpeed;
-      moving = true;
-      this.lastDirection = 'forward';
+    // If currently moving, continue the transition to target position
+    if (this.isMoving) {
+      const dx = this.targetX - this.playerSprite.x;
+      const dy = this.targetY - this.playerSprite.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < this.moveSpeed) {
+        // Snap to target position
+        this.playerSprite.x = this.targetX;
+        this.playerSprite.y = this.targetY;
+        this.isMoving = false;
+
+        // Don't switch to idle yet - check if we should continue moving
+      } else {
+        // Continue moving towards target
+        this.playerSprite.x += (dx / distance) * this.moveSpeed;
+        this.playerSprite.y += (dy / distance) * this.moveSpeed;
+      }
     }
 
-    // Update position
-    this.playerSprite.x += moveX;
-    this.playerSprite.y += moveY;
+    if (!this.isMoving) {
+      // Not currently moving, check for new movement input
+      // Check held keys to allow continuous movement (Pokemon style)
+      let newGridX = this.gridX;
+      let newGridY = this.gridY;
+      let inputDetected = false;
 
-    // Determine which animation to play
-    let animationName: string;
-    if (moving) {
-      animationName = `${this.lastDirection}_walk`;
-    } else {
-      animationName = `${this.lastDirection}_idle`;
+      // Priority order: check only one direction at a time (no diagonal movement)
+      if (this.keys['ArrowUp'] || this.keys['w']) {
+        newGridY -= 1;
+        this.lastDirection = 'backward';
+        inputDetected = true;
+      } else if (this.keys['ArrowDown'] || this.keys['s']) {
+        newGridY += 1;
+        this.lastDirection = 'forward';
+        inputDetected = true;
+      } else if (this.keys['ArrowLeft'] || this.keys['a']) {
+        newGridX -= 1;
+        this.lastDirection = 'side';
+        this.facingLeft = true;
+        inputDetected = true;
+      } else if (this.keys['ArrowRight'] || this.keys['d']) {
+        newGridX += 1;
+        this.lastDirection = 'side';
+        this.facingLeft = false;
+        inputDetected = true;
+      }
+
+      if (inputDetected) {
+        // Calculate bounds in grid coordinates
+        const maxGridX = Math.floor(this.app.screen.width / this.gridSize);
+        const maxGridY = Math.floor(this.app.screen.height / this.gridSize);
+
+        // Check if new position is within bounds
+        if (newGridX >= 0 && newGridX < maxGridX && newGridY >= 0 && newGridY < maxGridY) {
+          // Update grid position
+          this.gridX = newGridX;
+          this.gridY = newGridY;
+
+          // Calculate new target pixel position (center of grid cell)
+          this.targetX = this.gridX * this.gridSize + this.gridSize / 2;
+          this.targetY = this.gridY * this.gridSize + this.gridSize / 2;
+
+          // Start moving
+          this.isMoving = true;
+        }
+      }
     }
+
+    // Update animation state once per frame based on current state
+    const shouldWalk = this.isMoving || hasInput;
+    const animationName = shouldWalk ? `${this.lastDirection}_walk` : `${this.lastDirection}_idle`;
+    this.playAnimation(animationName);
 
     // Handle left/right flipping for side animations
     if (this.lastDirection === 'side') {
@@ -272,15 +339,6 @@ export class GameEngine {
       this.playerSprite.scale.x = 2;
     }
     this.playerSprite.scale.y = 2;
-
-    // Play the appropriate animation
-    this.playAnimation(animationName);
-
-    // Keep player within bounds (using sprite's actual dimensions)
-    const halfWidth = this.playerSprite.width / 2;
-    const halfHeight = this.playerSprite.height / 2;
-    this.playerSprite.x = Math.max(halfWidth, Math.min(this.app.screen.width - halfWidth, this.playerSprite.x));
-    this.playerSprite.y = Math.max(halfHeight, Math.min(this.app.screen.height - halfHeight, this.playerSprite.y));
   }
 
   public getState(): GameState {
