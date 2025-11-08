@@ -7,9 +7,6 @@ function App() {
   const {
     gameState,
     handleGameStateChange,
-    incrementScore,
-    decrementLives,
-    togglePause,
   } = useGameState();
 
   return (
@@ -19,12 +16,7 @@ function App() {
 
       {/* React UI Layer (Tailwind CSS) */}
       <HUD gameState={gameState} />
-      <Menu
-        onIncreaseScore={incrementScore}
-        onDecreaseLives={decrementLives}
-        onTogglePause={togglePause}
-        isPaused={!gameState.isRunning}
-      />
+      <Menu />
     </div>
   );
 }

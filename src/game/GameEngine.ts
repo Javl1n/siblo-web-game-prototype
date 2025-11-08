@@ -1,17 +1,12 @@
 import * as PIXI from 'pixi.js';
 
 export interface GameState {
-  score: number;
-  lives: number;
   isRunning: boolean;
 }
-
-type StateListener = (state: GameState) => void;
 
 export class GameEngine {
   private app: PIXI.Application;
   private state: GameState;
-  private listeners: Set<StateListener> = new Set();
   private playerSprite: PIXI.AnimatedSprite | null = null;
   private playerSpeed = 5;
   private keys: { [key: string]: boolean } = {};
@@ -24,8 +19,6 @@ export class GameEngine {
   constructor(app: PIXI.Application) {
     this.app = app;
     this.state = {
-      score: 0,
-      lives: 3,
       isRunning: true,
     };
 
@@ -157,11 +150,11 @@ export class GameEngine {
       const tilesX = Math.ceil(width / scaledTileSize) + 1;
       const tilesY = Math.ceil(height / scaledTileSize) + 1;
 
-      // Create textures for first 3x3 tiles (9 tiles total)
+      // Create textures for first 4x4 tiles (16 tiles total)
       const grassTextures: PIXI.Texture[] = [];
 
-      for (let row = 0; row < 3; row++) {
-        for (let col = 0; col < 3; col++) {
+      for (let row = 0; row < 4; row++) {
+        for (let col = 0; col < 4; col++) {
           const x = col * tileSize;
           const y = row * tileSize;
 
@@ -174,7 +167,7 @@ export class GameEngine {
         }
       }
 
-      console.log(`Loaded ${grassTextures.length} tiles from first 3x3 grid`);
+      console.log(`Loaded ${grassTextures.length} tiles from first 4x4 grid`);
 
       // Fill the screen with grass tiles (randomly selected for variety)
       for (let y = 0; y < tilesY; y++) {
@@ -290,45 +283,14 @@ export class GameEngine {
     this.playerSprite.y = Math.max(halfHeight, Math.min(this.app.screen.height - halfHeight, this.playerSprite.y));
   }
 
-  public incrementScore(points: number = 10): void {
-    this.state.score += points;
-    this.notifyListeners();
-  }
-
-  public decrementLives(): void {
-    this.state.lives--;
-    if (this.state.lives <= 0) {
-      this.state.isRunning = false;
-    }
-    this.notifyListeners();
-  }
-
-  public togglePause(): void {
-    this.state.isRunning = !this.state.isRunning;
-    this.notifyListeners();
-  }
-
   public getState(): GameState {
     return { ...this.state };
-  }
-
-  public subscribe(listener: StateListener): () => void {
-    this.listeners.add(listener);
-    // Return unsubscribe function
-    return () => this.listeners.delete(listener);
-  }
-
-  private notifyListeners(): void {
-    this.listeners.forEach((listener) => listener(this.getState()));
   }
 
   public destroy(): void {
     // Clean up keyboard listeners
     window.removeEventListener('keydown', () => {});
     window.removeEventListener('keyup', () => {});
-
-    // Clear all listeners
-    this.listeners.clear();
 
     // Destroy sprites
     if (this.playerSprite) {

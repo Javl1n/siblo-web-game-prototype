@@ -46,11 +46,6 @@ export const GameCanvas = ({ onGameStateChange }: GameCanvasProps) => {
       gameRef.current = game;
       appRef.current = app;
 
-      // Subscribe to game state changes
-      game.subscribe((state) => {
-        onGameStateChangeRef.current(state);
-      });
-
       // Send initial state
       onGameStateChangeRef.current(game.getState());
 

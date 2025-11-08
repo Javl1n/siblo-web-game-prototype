@@ -3,8 +3,6 @@ import { GameEngine, type GameState } from '../game';
 
 export const useGameState = () => {
   const [gameState, setGameState] = useState<GameState>({
-    score: 0,
-    lives: 3,
     isRunning: true,
   });
 
@@ -14,24 +12,9 @@ export const useGameState = () => {
     setGameState(state);
   };
 
-  const incrementScore = () => {
-    gameRef.current?.incrementScore(10);
-  };
-
-  const decrementLives = () => {
-    gameRef.current?.decrementLives();
-  };
-
-  const togglePause = () => {
-    gameRef.current?.togglePause();
-  };
-
   return {
     gameState,
     gameRef,
     handleGameStateChange,
-    incrementScore,
-    decrementLives,
-    togglePause,
   };
 };
