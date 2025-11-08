@@ -1,0 +1,653 @@
+{
+  "frames": {
+    "grass_plain_01.png": {
+      "frame": { "x": 0, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_02.png": {
+      "frame": { "x": 32, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_03.png": {
+      "frame": { "x": 64, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_dots_top_left.png": {
+      "frame": { "x": 96, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_plain_01.png": {
+      "frame": { "x": 128, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_dots_01.png": {
+      "frame": { "x": 160, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_dots_02.png": {
+      "frame": { "x": 192, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_dots_03.png": {
+      "frame": { "x": 224, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_plain_02.png": {
+      "frame": { "x": 256, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_04.png": {
+      "frame": { "x": 288, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_dots_04.png": {
+      "frame": { "x": 320, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_05.png": {
+      "frame": { "x": 352, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_dots_05.png": {
+      "frame": { "x": 384, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_06.png": {
+      "frame": { "x": 416, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_dots_06.png": {
+      "frame": { "x": 448, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_07.png": {
+      "frame": { "x": 480, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_08.png": {
+      "frame": { "x": 0, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_bottom_left.png": {
+      "frame": { "x": 32, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_horizontal.png": {
+      "frame": { "x": 64, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_09.png": {
+      "frame": { "x": 96, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_10.png": {
+      "frame": { "x": 128, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_11.png": {
+      "frame": { "x": 160, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_12.png": {
+      "frame": { "x": 192, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_13.png": {
+      "frame": { "x": 224, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_14.png": {
+      "frame": { "x": 256, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_dots_07.png": {
+      "frame": { "x": 288, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_15.png": {
+      "frame": { "x": 320, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_16.png": {
+      "frame": { "x": 352, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_17.png": {
+      "frame": { "x": 384, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_18.png": {
+      "frame": { "x": 416, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "dirt_dots_08.png": {
+      "frame": { "x": 448, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_19.png": {
+      "frame": { "x": 480, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_20.png": {
+      "frame": { "x": 0, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_inner_corner_bottom_left.png": {
+      "frame": { "x": 32, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_bottom_edge_01.png": {
+      "frame": { "x": 64, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_bottom_edge_02.png": {
+      "frame": { "x": 96, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_inner_corner_bottom_right.png": {
+      "frame": { "x": 128, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_21.png": {
+      "frame": { "x": 160, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_22.png": {
+      "frame": { "x": 192, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_23.png": {
+      "frame": { "x": 224, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_24.png": {
+      "frame": { "x": 256, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_25.png": {
+      "frame": { "x": 288, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_26.png": {
+      "frame": { "x": 320, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_27.png": {
+      "frame": { "x": 352, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_28.png": {
+      "frame": { "x": 384, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_29.png": {
+      "frame": { "x": 416, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_30.png": {
+      "frame": { "x": 448, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_31.png": {
+      "frame": { "x": 480, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_corner_top_left.png": {
+      "frame": { "x": 0, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_top_edge_curve_01.png": {
+      "frame": { "x": 32, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_top_edge_curve_02.png": {
+      "frame": { "x": 64, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_diagonal_piece.png": {
+      "frame": { "x": 96, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_top_edge_curve_03.png": {
+      "frame": { "x": 128, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_corner_top_right.png": {
+      "frame": { "x": 160, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_32.png": {
+      "frame": { "x": 192, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_33.png": {
+      "frame": { "x": 224, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_34.png": {
+      "frame": { "x": 256, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_35.png": {
+      "frame": { "x": 288, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_36.png": {
+      "frame": { "x": 320, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_37.png": {
+      "frame": { "x": 352, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_38.png": {
+      "frame": { "x": 384, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_39.png": {
+      "frame": { "x": 416, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_40.png": {
+      "frame": { "x": 448, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_41.png": {
+      "frame": { "x": 480, "y": 96, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_left_edge_01.png": {
+      "frame": { "x": 0, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_01.png": {
+      "frame": { "x": 32, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_02.png": {
+      "frame": { "x": 64, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_03.png": {
+      "frame": { "x": 96, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_04.png": {
+      "frame": { "x": 128, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_right_edge_01.png": {
+      "frame": { "x": 160, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_42.png": {
+      "frame": { "x": 192, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_angled_vertical_left.png": {
+      "frame": { "x": 224, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_angled_vertical.png": {
+      "frame": { "x": 256, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_angled_vertical_right.png": {
+      "frame": { "x": 288, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_43.png": {
+      "frame": { "x": 320, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_44.png": {
+      "frame": { "x": 352, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_45.png": {
+      "frame": { "x": 384, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_46.png": {
+      "frame": { "x": 416, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_47.png": {
+      "frame": { "x": 448, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_48.png": {
+      "frame": { "x": 480, "y": 128, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_left_edge_02.png": {
+      "frame": { "x": 0, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_05.png": {
+      "frame": { "x": 32, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_06.png": {
+      "frame": { "x": 64, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_07.png": {
+      "frame": { "x": 96, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_08.png": {
+      "frame": { "x": 128, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_right_edge_02.png": {
+      "frame": { "x": 160, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_49.png": {
+      "frame": { "x": 192, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_50.png": {
+      "frame": { "x": 224, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_51.png": {
+      "frame": { "x": 256, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_52.png": {
+      "frame": { "x": 288, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_53.png": {
+      "frame": { "x": 320, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_54.png": {
+      "frame": { "x": 352, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_55.png": {
+      "frame": { "x": 384, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_56.png": {
+      "frame": { "x": 416, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_57.png": {
+      "frame": { "x": 448, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_58.png": {
+      "frame": { "x": 480, "y": 160, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_left_edge_03.png": {
+      "frame": { "x": 0, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_09.png": {
+      "frame": { "x": 32, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_10.png": {
+      "frame": { "x": 64, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_11.png": {
+      "frame": { "x": 96, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_interior_12.png": {
+      "frame": { "x": 128, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "path_right_edge_03.png": {
+      "frame": { "x": 160, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_59.png": {
+      "frame": { "x": 192, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_60.png": {
+      "frame": { "x": 224, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_61.png": {
+      "frame": { "x": 256, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_62.png": {
+      "frame": { "x": 288, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_63.png": {
+      "frame": { "x": 320, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_64.png": {
+      "frame": { "x": 352, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_left.png": {
+      "frame": { "x": 384, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_01.png": {
+      "frame": { "x": 416, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_02.png": {
+      "frame": { "x": 448, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_03.png": {
+      "frame": { "x": 480, "y": 192, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_04.png": {
+      "frame": { "x": 0, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_05.png": {
+      "frame": { "x": 32, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_06.png": {
+      "frame": { "x": 64, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_07.png": {
+      "frame": { "x": 96, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_08.png": {
+      "frame": { "x": 128, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_09.png": {
+      "frame": { "x": 160, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_10.png": {
+      "frame": { "x": 192, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_11.png": {
+      "frame": { "x": 224, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_top_right.png": {
+      "frame": { "x": 256, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_65.png": {
+      "frame": { "x": 288, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_66.png": {
+      "frame": { "x": 320, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "grass_plain_67.png": {
+      "frame": { "x": 352, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_left.png": {
+      "frame": { "x": 384, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_fill_01.png": {
+      "frame": { "x": 416, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_fill_02.png": {
+      "frame": { "x": 448, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    },
+    "border_rect_right.png": {
+      "frame": { "x": 480, "y": 224, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+    }
+  },
+  "meta": {
+    "app": "Claude Code",
+    "version": "1.0",
+    "image": "Grass-01.png",
+    "format": "RGBA8888",
+    "size": { "w": 512, "h": 256 },
+    "scale": "1",
+    "description": "Grass tileset: 128 tiles total arranged in a 16x8 grid. Each tile is 32x32 pixels. Contains plain grass tiles, dirt/path tiles with various patterns, hexagonal path borders, and rectangular border pieces."
+  }
+}
