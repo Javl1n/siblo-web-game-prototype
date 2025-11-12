@@ -203,15 +203,16 @@ Register a new student account.
 **Request:**
 ```typescript
 type RegisterRequest = {
-  name: string;
-  username: string;
-  email: string;
-  password: string;
-  password_confirmation: string;
-  user_type: 'student' | 'teacher';
-  trainer_name?: string; // Required for students
+  name: string;                    // Full name
+  username: string;                // Unique username (max 50 chars, alphanumeric + dashes/underscores)
+  email: string;                   // Valid email address
+  password: string;                // Minimum 8 characters
+  password_confirmation: string;   // Must match password
+  trainer_name: string;            // Display name in game (max 50 chars) - REQUIRED
 };
 ```
+
+> **Note:** The `user_type` field is NOT required - the backend automatically creates all game client registrations as `'student'` accounts. Teachers register through the web dashboard.
 
 **Example:**
 ```typescript
@@ -221,7 +222,6 @@ const registerData: RegisterRequest = {
   email: 'juan@example.com',
   password: 'password123',
   password_confirmation: 'password123',
-  user_type: 'student',
   trainer_name: 'Trainer Juan'
 };
 
@@ -231,15 +231,34 @@ const response = await fetch('/api/auth/register', {
   body: JSON.stringify(registerData)
 });
 
-const { user, token } = await response.json();
+const data = await response.json();
+console.log(data.message); // "Registration successful! Welcome to SIBLO."
 ```
 
-**Response:**
+**Response (201 Created):**
 ```typescript
 {
+  message: string;              // Success message
+  user: {
+    id: number;
+    username: string;
+    name: string;               // Full name
+    email: string;
+    user_type: 'student'
+  },
+  token: string;                // Sanctum API token
+}
+```
+
+**Example Response:**
+```typescript
+{
+  message: 'Registration successful! Welcome to SIBLO.',
   user: {
     id: 1,
     username: 'juandc',
+    name: 'Juan Dela Cruz',
+    email: 'juan@example.com',
     user_type: 'student'
   },
   token: '1|abc123tokenhere'
@@ -258,17 +277,39 @@ type LoginRequest = {
 };
 ```
 
-**Response:**
+**Response (200 OK):**
 ```typescript
 {
+  message: string;              // Success message
+  user: {
+    id: number;
+    username: string;
+    name: string;               // Full name
+    email: string;
+    user_type: 'student'
+  },
+  token: string;                // Sanctum API token (revokes all previous tokens)
+}
+```
+
+**Example Response:**
+```typescript
+{
+  message: 'Login successful!',
   user: {
     id: 1,
     username: 'juandc',
+    name: 'Juan Dela Cruz',
+    email: 'juan@example.com',
     user_type: 'student'
   },
   token: '2|xyz456tokenhere'
 }
 ```
+
+**Error Responses:**
+- `401 Unauthorized`: Invalid email or password
+- `403 Forbidden`: Account is not a student (teacher accounts cannot access game)
 
 #### POST /api/auth/logout
 
@@ -283,6 +324,13 @@ await fetch('/api/auth/logout', {
     'Accept': 'application/json'
   }
 });
+```
+
+**Response (200 OK):**
+```typescript
+{
+  message: 'Logout successful. See you next time!'
+}
 ```
 
 ---
@@ -302,14 +350,31 @@ Accept: application/json
 **Response:**
 ```typescript
 type PlayerProfile = {
-  id: number;
-  user_id: number;
-  trainer_name: string;
-  level: number;
-  experience_points: number;
-  coins: number;
-  current_region_id: number | null;
+  id: number;                      // Player profile ID
+  user_id: number;                 // User account ID
+  username: string;                // Account username
+  name: string;                    // Full name
+  trainer_name: string;            // Display name in game
+  level: number;                   // Player level (increases every 1000 XP)
+  experience_points: number;       // Total XP earned
+  coins: number;                   // In-game currency
+  current_region_id: number | null; // Current region (null for prototype)
 };
+```
+
+**Example Response:**
+```typescript
+{
+  id: 42,
+  user_id: 1,
+  username: 'juandc',
+  name: 'Juan Dela Cruz',
+  trainer_name: 'Trainer Juan',
+  level: 5,
+  experience_points: 4250,
+  coins: 1840,
+  current_region_id: null
+}
 ```
 
 **Example:**
@@ -322,32 +387,77 @@ const response = await fetch('/api/player/profile', {
 });
 
 const profile: PlayerProfile = await response.json();
-console.log(`Level: ${profile.level}, XP: ${profile.experience_points}`);
+console.log(`${profile.trainer_name} - Level ${profile.level}, XP: ${profile.experience_points}`);
 ```
 
 #### GET /api/player/siblons
 
-Get player's Siblon collection.
+Get player's Siblon collection with full species data.
 
 **Response:**
 ```typescript
 type PlayerSiblon = {
-  id: number;
-  species_id: number;
-  nickname: string | null;
-  level: number;
-  current_hp: number;
-  max_hp: number;
-  attack_stat: number;
-  defense_stat: number;
-  speed_stat: number;
-  is_in_party: boolean;
+  id: number;                      // Unique instance ID
+  species_id: number;              // Species ID
+  species_name: string;            // Species name (e.g., "Flamey", "Aquos")
+  nickname: string | null;         // Custom nickname (null if not set)
+  level: number;                   // Siblon level
+  experience_points: number;       // XP earned by this Siblon
+  current_hp: number;              // Current HP (for battles)
+  max_hp: number;                  // Maximum HP
+  attack_stat: number;             // Attack stat
+  defense_stat: number;            // Defense stat
+  speed_stat: number;              // Speed stat (determines turn order)
+  is_in_party: boolean;            // True if in active party (max 6)
+  caught_at: string;               // ISO 8601 timestamp when caught
+  species_data: {                  // Complete species information
+    dex_number: number;            // Pokedex-style number
+    type_primary: string;          // Primary type (e.g., "Fire", "Water")
+    type_secondary: string | null; // Secondary type (null if single-type)
+    rarity: 'common' | 'uncommon' | 'rare' | 'legendary';
+    sprite_url: string;            // URL to sprite image
+    description: string;           // Species description/lore
+  };
 };
 
 type SiblonsResponse = {
-  party: PlayerSiblon[];
-  collection: PlayerSiblon[];
+  party: PlayerSiblon[];           // Active party members
+  collection: PlayerSiblon[];      // All owned Siblons
+  total_count: number;             // Total number of Siblons owned
 };
+```
+
+**Example Response:**
+```typescript
+{
+  party: [
+    {
+      id: 42,
+      species_id: 1,
+      species_name: 'Flamey',
+      nickname: 'Burnie',
+      level: 18,
+      experience_points: 2450,
+      current_hp: 45,
+      max_hp: 50,
+      attack_stat: 35,
+      defense_stat: 28,
+      speed_stat: 40,
+      is_in_party: true,
+      caught_at: '2025-11-10T08:30:00Z',
+      species_data: {
+        dex_number: 1,
+        type_primary: 'Fire',
+        type_secondary: null,
+        rarity: 'common',
+        sprite_url: '/sprites/siblons/001-flamey.png',
+        description: 'A fiery creature known for its passionate learning spirit.'
+      }
+    }
+  ],
+  collection: [...],
+  total_count: 12
+}
 ```
 
 ---
@@ -386,9 +496,11 @@ type Quiz = {
   title: string;
   description: string | null;
   subject: string;
+  topic: string;
   difficulty_level: 'easy' | 'medium' | 'hard';
   time_limit_minutes: number | null;
   max_attempts: number | null;
+  pass_threshold: number;
   question_count: number;
   is_featured: boolean;
 };
@@ -409,6 +521,7 @@ type QuizQuestion = {
   question_text: string;
   question_type: 'multiple_choice' | 'true_false' | 'fill_blank' | 'multiple_correct';
   points: number;
+  media_url: string | null;
   choices: Array<{
     id: number;
     choice_text: string;
@@ -419,7 +532,13 @@ type QuizQuestion = {
 type QuizDetail = {
   id: number;
   title: string;
+  description: string | null;
+  subject: string;
+  topic: string;
+  difficulty_level: 'easy' | 'medium' | 'hard';
   time_limit_minutes: number | null;
+  max_attempts: number | null;
+  pass_threshold: number;
   questions: QuizQuestion[];
 };
 ```
@@ -494,6 +613,7 @@ type SubmitQuizResponse = {
   max_score: number;
   percentage: number;
   passed: boolean;
+  time_taken: number; // Time in seconds
   rewards: {
     experience_points: number;
     coins: number;
@@ -502,8 +622,9 @@ type SubmitQuizResponse = {
   answers: Array<{
     question_id: number;
     is_correct: boolean;
+    correct_answer: number[]; // Array of correct choice IDs
     points_earned: number;
-    explanation: string;
+    explanation: string | null;
   }>;
 };
 ```
@@ -547,10 +668,13 @@ const battle = await response.json();
 **Response:**
 ```typescript
 type BattlePlayer = {
-  user_id: number;
-  siblon_id: number;
+  user_id: number | null;
+  username: string;
+  siblon_id: number | null;
+  siblon_name: string;
   hp: number;
   max_hp: number;
+  level: number;
 };
 
 type StartBattleResponse = {
@@ -559,6 +683,7 @@ type StartBattleResponse = {
   player2: BattlePlayer;
   current_turn: number;
   turn_player_id: number;
+  status: 'active' | 'completed' | 'forfeited';
 };
 ```
 
@@ -568,20 +693,53 @@ Get current battle state.
 
 **Response:**
 ```typescript
+type BattleLogEntry = {
+  action: string;
+  player_id: number | null;
+  message: string;
+  timestamp?: string;
+};
+
 type BattleState = {
   battle_id: string;
-  status: 'active' | 'completed' | 'abandoned';
+  status: 'active' | 'completed' | 'forfeited';
   player1: BattlePlayer;
   player2: BattlePlayer;
   current_turn: number;
   turn_player_id: number;
   winner_id: number | null;
+  started_at: string; // ISO 8601 timestamp
+  completed_at: string | null; // ISO 8601 timestamp
+  battle_log: BattleLogEntry[];
 };
 ```
 
 #### POST /api/battles/{id}/forfeit
 
-Forfeit an active battle.
+Forfeit an active battle. The opponent will be declared the winner.
+
+**Example:**
+```typescript
+const response = await fetch(`/api/battles/${battleId}/forfeit`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${token}`,
+    'Content-Type': 'application/json'
+  }
+});
+
+const result = await response.json();
+```
+
+**Response:**
+```typescript
+type ForfeitBattleResponse = {
+  message: string;
+  battle_id: string;
+  winner_id: number | null;
+  status: 'completed' | 'forfeited';
+};
+```
 
 ---
 
@@ -1035,6 +1193,122 @@ try {
         showErrorNotification(error.message);
     }
   }
+}
+```
+
+---
+
+## Validation Rules
+
+### Authentication Endpoints
+
+#### POST /api/auth/register
+- `email`: Required, valid email format, unique, max 255 characters
+- `password`: Required, string, min 8 characters
+- `trainer_name`: Required, string, max 50 characters
+- `name`: Optional, string, max 255 characters
+
+**Example validation error:**
+```json
+{
+  "message": "The email has already been taken.",
+  "errors": {
+    "email": ["The email has already been taken."],
+    "password": ["The password field must be at least 8 characters."]
+  }
+}
+```
+
+#### POST /api/auth/login
+- `email`: Required, valid email format
+- `password`: Required, string
+
+### Quiz Endpoints
+
+#### POST /api/quiz-attempts/{id}/submit
+- `answers`: Required, array
+- `answers.*.question_id`: Required, integer, exists in questions table
+- `answers.*.selected_choice_ids`: Required, array
+- `answers.*.selected_choice_ids.*`: Required, integer, exists in question_choices table
+
+**Common validation errors:**
+```json
+{
+  "message": "The answers field is required.",
+  "errors": {
+    "answers": ["The answers field is required."],
+    "answers.0.question_id": ["The selected question id is invalid."],
+    "answers.0.selected_choice_ids": ["The selected choice ids field is required."]
+  }
+}
+```
+
+### Battle Endpoints
+
+#### POST /api/battles/start
+- `player_siblon_id`: Required, integer, exists in player_siblons table, must belong to authenticated user
+- `battle_type`: Required, string, must be one of: `pvp`, `pve`, `training`
+- `opponent_id`: Required if battle_type is `pvp`, integer, exists in users table
+
+**Common validation errors:**
+```json
+{
+  "message": "The player siblon id field is required.",
+  "errors": {
+    "player_siblon_id": ["The player siblon id field is required."],
+    "battle_type": ["The selected battle type is invalid."],
+    "opponent_id": ["The opponent id field is required when battle type is pvp."]
+  }
+}
+```
+
+### Business Logic Errors
+
+In addition to validation errors (422), the API returns specific error messages for business logic failures:
+
+#### Quiz Attempt Errors (403 Forbidden)
+```json
+{
+  "message": "You have reached the maximum number of attempts for this quiz."
+}
+```
+
+```json
+{
+  "message": "This quiz is not published."
+}
+```
+
+#### Battle Errors (403 Forbidden)
+```json
+{
+  "message": "This Siblon does not belong to you."
+}
+```
+
+```json
+{
+  "message": "You are not part of this battle."
+}
+```
+
+#### Battle Errors (400 Bad Request)
+```json
+{
+  "message": "This battle is not active."
+}
+```
+
+#### Authentication Errors (401 Unauthorized)
+```json
+{
+  "message": "Invalid credentials."
+}
+```
+
+```json
+{
+  "message": "Only student accounts can access the game API."
 }
 ```
 

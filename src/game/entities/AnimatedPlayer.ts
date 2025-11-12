@@ -5,6 +5,7 @@ export class AnimatedPlayer {
   private speed: number = 3;
   private animations: Map<string, PIXI.Texture[]> = new Map();
   private currentAnimation: string = 'idle';
+  private lastDirection: number = 1; // 1 for right, -1 for left
 
   constructor(textures: PIXI.Texture[], x: number = 0, y: number = 0) {
     // Create animated sprite with default textures
@@ -59,11 +60,13 @@ export class AnimatedPlayer {
     if (keys['ArrowLeft'] || keys['a']) {
       this.sprite.x -= this.speed;
       this.sprite.scale.x = -Math.abs(this.sprite.scale.x); // Flip left
+      this.lastDirection = -1; // Remember we're facing left
       moving = true;
     }
     if (keys['ArrowRight'] || keys['d']) {
       this.sprite.x += this.speed;
       this.sprite.scale.x = Math.abs(this.sprite.scale.x); // Flip right
+      this.lastDirection = 1; // Remember we're facing right
       moving = true;
     }
     if (keys['ArrowUp'] || keys['w']) {
@@ -80,6 +83,12 @@ export class AnimatedPlayer {
       this.playAnimation('walk');
     } else if (!moving && this.animations.has('idle')) {
       this.playAnimation('idle');
+      // Maintain the last direction when idle
+      if (this.lastDirection === -1) {
+        this.sprite.scale.x = -Math.abs(this.sprite.scale.x); // Face left
+      } else {
+        this.sprite.scale.x = Math.abs(this.sprite.scale.x); // Face right
+      }
     }
 
     // Keep within bounds

@@ -10,7 +10,7 @@ function App() {
   } = useGameState();
 
   return (
-    <div className="w-screen h-screen bg-gray-900 overflow-hidden relative">
+    <div className="w-screen h-screen overflow-hidden relative">
       {/* PixiJS Game Canvas (Vanilla PixiJS) */}
       <GameCanvas onGameStateChange={handleGameStateChange} />
 

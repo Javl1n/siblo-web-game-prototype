@@ -27,6 +27,8 @@ export class AssetLoader {
     try {
       // Load the texture
       const texture = await PIXI.Assets.load(imagePath);
+      // Set scale mode to nearest for pixel art rendering
+      texture.source.scaleMode = 'nearest';
 
       let spritesheet: PIXI.Spritesheet;
 
@@ -65,6 +67,8 @@ export class AssetLoader {
 
     try {
       const texture = await PIXI.Assets.load(path);
+      // Set scale mode to nearest for pixel art rendering
+      texture.source.scaleMode = 'nearest';
       this.loadedAssets.set(name, texture);
       return texture;
     } catch (error) {

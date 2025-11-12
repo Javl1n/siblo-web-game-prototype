@@ -1,109 +1,67 @@
 {
   "frames": {
     "forward_idle_01.png": {
-      "frame": { "x": 0, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
-    },
-    "forward_idle_02.png": {
-      "frame": { "x": 40, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
-    },
-    "forward_idle_03.png": {
-      "frame": { "x": 80, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+      "frame": { "x": 0, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     },
     "forward_walk_01.png": {
-      "frame": { "x": 120, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+      "frame": { "x": 32, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     },
     "forward_walk_02.png": {
-      "frame": { "x": 160, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+      "frame": { "x": 64, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     },
-    "forward_walk_03.png": {
-      "frame": { "x": 200, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
-    },
-    "forward_walk_04.png": {
-      "frame": { "x": 240, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
-    },
+
     "backward_idle_01.png": {
-      "frame": { "x": 280, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
-    },
-    "backward_idle_02.png": {
-      "frame": { "x": 320, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
-    },
-    "backward_idle_03.png": {
-      "frame": { "x": 360, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+      "frame": { "x": 96, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     },
     "backward_walk_01.png": {
-      "frame": { "x": 400, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+      "frame": { "x": 0, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     },
     "backward_walk_02.png": {
-      "frame": { "x": 440, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+      "frame": { "x": 32, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     },
-    "backward_walk_03.png": {
-      "frame": { "x": 480, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+
+    "right_idle_01.png": {
+      "frame": { "x": 64, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     },
-    "backward_walk_04.png": {
-      "frame": { "x": 520, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+    "right_walk_01.png": {
+      "frame": { "x": 96, "y": 32, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     },
-    "side_idle_01.png": {
-      "frame": { "x": 560, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+    "right_walk_02.png": {
+      "frame": { "x": 0, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     },
-    "side_idle_02.png": {
-      "frame": { "x": 600, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+
+    "left_idle_01.png": {
+      "frame": { "x": 32, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     },
-    "side_idle_03.png": {
-      "frame": { "x": 640, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+    "left_walk_02.png": {
+      "frame": { "x": 64, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     },
-    "side_walk_01.png": {
-      "frame": { "x": 680, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
-    },
-    "side_walk_02.png": {
-      "frame": { "x": 720, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
-    },
-    "side_walk_03.png": {
-      "frame": { "x": 760, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
-    },
-    "side_walk_04.png": {
-      "frame": { "x": 800, "y": 0, "w": 40, "h": 64 },
-      "sourceSize": { "w": 40, "h": 64 },
-      "spriteSourceSize": { "x": 0, "y": 0, "w": 40, "h": 64 }
+    "left_walk_03.png": {
+      "frame": { "x": 96, "y": 64, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
     }
   },
   "meta": {
@@ -111,43 +69,31 @@
     "version": "1.0",
     "image": "player.png",
     "format": "RGBA8888",
-    "size": { "w": 840, "h": 64 },
+    "size": { "w": 128, "h": 96 },
     "scale": "1",
-    "description": "Character sprite sheet: 3 groups of 7 frames each (21 total). Group 1: Forward facing (frames 0-6), Group 2: Backward facing (frames 7-13), Group 3: Side facing (frames 14-20). First 3 frames of each group are idle animation, next 4 are walking animation. Each frame is 40x64 pixels (vertically standing character)."
+    "description": "Character sprite sheet: 3 rows of 4 frames each (12 total). Row 1 (y=0): Forward facing (1 idle + 3 walk), Row 2 (y=32): Backward facing (1 idle + 3 walk), Row 3 (y=64): Side facing (1 idle + 3 walk). Each frame is 32x32 pixels."
   },
   "animations": {
     "forward_idle": [
-      "forward_idle_01.png",
-      "forward_idle_02.png",
-      "forward_idle_03.png"
+      "forward_idle_01.png"
     ],
     "forward_walk": [
       "forward_walk_01.png",
-      "forward_walk_02.png",
-      "forward_walk_03.png",
-      "forward_walk_04.png"
+      "forward_walk_02.png"
     ],
     "backward_idle": [
-      "backward_idle_01.png",
-      "backward_idle_02.png",
-      "backward_idle_03.png"
+      "backward_idle_01.png"
     ],
     "backward_walk": [
       "backward_walk_01.png",
-      "backward_walk_02.png",
-      "backward_walk_03.png",
-      "backward_walk_04.png"
+      "backward_walk_02.png"
     ],
     "side_idle": [
-      "side_idle_01.png",
-      "side_idle_02.png",
-      "side_idle_03.png"
+      "right_idle_01.png"
     ],
     "side_walk": [
-      "side_walk_01.png",
-      "side_walk_02.png",
-      "side_walk_03.png",
-      "side_walk_04.png"
+      "right_walk_01.png",
+      "right_walk_02.png"
     ]
   }
 }

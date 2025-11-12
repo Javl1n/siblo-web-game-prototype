@@ -1,15 +1,66 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-body {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   font-family: system-ui, -apple-system, sans-serif;
+  background: #1a1a2e;
 }
 
-#root {
+#game-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#game-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Pixel Art Input Styling */
+.pixel-art-input {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  letter-spacing: 0;
+  border-radius: 0;
+  border: 2px solid #8B9BB4;
+  background: #2a2a3e;
+  color: #F8F8F8;
+  padding: 8px;
+}
+
+.pixel-art-input:focus {
+  outline: none;
+  border-color: #5B6EE1;
+  box-shadow: none;
+}
+
+.pixel-art-input::placeholder {
+  color: #666;
+  opacity: 1;
 }
