@@ -23,18 +23,18 @@ steps:
 
   # Step 2: Deploy to App Engine
   - name: 'gcr.io/cloud-builders/gcloud'
-    id: 'deploy'
+    # id: 'deploy'
     args:
       - 'app'
       - 'deploy'
-      - 'app.yaml'
+      # - 'app.yaml'
       - '--quiet'
-      - '--project=${PROJECT_ID}'
-    waitFor: ['build']
+      # - '--project=${PROJECT_ID}'
+    # waitFor: ['build']
 
 # Substitutions (default values - override these in Cloud Build trigger)
 substitutions:
-  _API_URL: 'https://api.siblo.com'
+  _API_URL: 'https://siblo-web-prototype-main-n0hwlc.laravel.cloud/'
   _API_TIMEOUT: '10000'
   _REVERB_APP_KEY: 'your-reverb-key-here'
   _REVERB_HOST: 'api.siblo.com'
