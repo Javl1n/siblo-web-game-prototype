@@ -49,4 +49,4 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 # Build timeout (10 minutes)
-timeout: 600s
+timeout: 900s
