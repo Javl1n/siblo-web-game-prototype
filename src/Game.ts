@@ -15,7 +15,7 @@ import { useAuthStore } from './state/authStore';
 import { MenuScene } from './scenes/MenuScene';
 import { OverworldScene } from './scenes/OverworldScene';
 // import { BattleScene } from './scenes/BattleScene';
-// import { QuizScene } from './scenes/QuizScene';
+import { QuizScene } from './scenes/QuizScene';
 
 export class Game {
   private app: PIXI.Application;
@@ -105,7 +105,7 @@ export class Game {
     this.sceneManager.registerScene(SCENE_NAMES.MENU, MenuScene);
     this.sceneManager.registerScene(SCENE_NAMES.OVERWORLD, OverworldScene);
     // this.sceneManager.registerScene(SCENE_NAMES.BATTLE, BattleScene);
-    // this.sceneManager.registerScene(SCENE_NAMES.QUIZ, QuizScene);
+    this.sceneManager.registerScene(SCENE_NAMES.QUIZ, QuizScene);
   }
 
   /**

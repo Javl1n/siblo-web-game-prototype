@@ -427,9 +427,7 @@ export class OverworldScene extends BaseScene {
         alert('Battle system coming soon!');
         break;
       case 'quiz':
-        // TODO: Uncomment when QuizScene is implemented
-        // this.sceneManager.loadScene(SCENE_NAMES.QUIZ);
-        alert('Quiz system coming soon!');
+        this.sceneManager.loadScene(SCENE_NAMES.QUIZ);
         break;
       case 'npc':
         alert('NPC: Welcome to the world of Siblo!');

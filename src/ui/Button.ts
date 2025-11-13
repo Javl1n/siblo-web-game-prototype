@@ -20,7 +20,7 @@ export interface ButtonConfig {
 
 export class Button extends PIXI.Container {
   private background: PIXI.Graphics;
-  private label: PIXI.Text;
+  private labelText: PIXI.Text;
   private config: Required<ButtonConfig>;
   private isHovered: boolean = false;
   private isPressed: boolean = false;
@@ -48,7 +48,7 @@ export class Button extends PIXI.Container {
     this.addChild(this.background);
 
     // Create label
-    this.label = new PIXI.Text({
+    this.labelText = new PIXI.Text({
       text: this.config.text,
       style: {
         fontFamily: GAME_CONFIG.FONTS.PIXEL,
@@ -56,10 +56,10 @@ export class Button extends PIXI.Container {
         fill: this.config.textColor,
       },
     });
-    this.label.anchor.set(0.5);
-    this.label.x = this.config.width / 2;
-    this.label.y = this.config.height / 2;
-    this.addChild(this.label);
+    this.labelText.anchor.set(0.5);
+    this.labelText.x = this.config.width / 2;
+    this.labelText.y = this.config.height / 2;
+    this.addChild(this.labelText);
 
     // Make interactive
     this.eventMode = 'static';
@@ -135,7 +135,7 @@ export class Button extends PIXI.Container {
    * Update button text
    */
   setText(text: string): void {
-    this.label.text = text;
+    this.labelText.text = text;
   }
 
   /**
@@ -150,7 +150,7 @@ export class Button extends PIXI.Container {
   /**
    * Cleanup
    */
-  destroy(options?: boolean | PIXI.ContainerDestroyOptions): void {
+  destroy(options?: boolean | PIXI.DestroyOptions): void {
     this.off('pointerover', this.onHover);
     this.off('pointerout', this.onLeave);
     this.off('pointerdown', this.onPress);
