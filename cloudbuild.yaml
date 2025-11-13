@@ -1,0 +1,61 @@
+steps:
+  # Step 1: Install pnpm
+  - name: 'node:20'
+    id: 'install-pnpm'
+    entrypoint: 'npm'
+    args: ['install', '-g', 'pnpm']
+
+  # Step 2: Install dependencies
+  - name: 'node:20'
+    id: 'install-dependencies'
+    entrypoint: 'pnpm'
+    args: ['install', '--frozen-lockfile']
+    waitFor: ['install-pnpm']
+
+  # Step 3: Build the application
+  - name: 'node:20'
+    id: 'build'
+    entrypoint: 'pnpm'
+    args: ['run', 'build']
+    env:
+      # Build-time environment variables
+      - 'VITE_API_URL=${_API_URL}'
+      - 'VITE_API_TIMEOUT=${_API_TIMEOUT}'
+      - 'VITE_REVERB_APP_KEY=${_REVERB_APP_KEY}'
+      - 'VITE_REVERB_HOST=${_REVERB_HOST}'
+      - 'VITE_REVERB_PORT=${_REVERB_PORT}'
+      - 'VITE_REVERB_SCHEME=${_REVERB_SCHEME}'
+      - 'VITE_GAME_WIDTH=${_GAME_WIDTH}'
+      - 'VITE_GAME_HEIGHT=${_GAME_HEIGHT}'
+      - 'VITE_GAME_DEBUG=${_GAME_DEBUG}'
+    waitFor: ['install-dependencies']
+
+  # Step 4: Deploy to App Engine
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: 'deploy'
+    args:
+      - 'app'
+      - 'deploy'
+      - 'app.yaml'
+      - '--quiet'
+      - '--project=${PROJECT_ID}'
+    waitFor: ['build']
+
+# # Substitutions (default values - override these in Cloud Build trigger)
+# substitutions:
+#   _API_URL: 'https://api.siblo.com'
+#   _API_TIMEOUT: '10000'
+#   _REVERB_APP_KEY: 'your-reverb-key-here'
+#   _REVERB_HOST: 'api.siblo.com'
+#   _REVERB_PORT: '443'
+#   _REVERB_SCHEME: 'https'
+#   _GAME_WIDTH: '800'
+#   _GAME_HEIGHT: '600'
+#   _GAME_DEBUG: 'false'
+
+# Build options
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+# Build timeout (10 minutes)
+timeout: 600s

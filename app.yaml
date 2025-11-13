@@ -1,0 +1,7 @@
+runtime: nodejs20
+
+# App Engine configuration for SIBLO Web Game
+instance_class: F1
+
+# Environment variables
+env: standard
