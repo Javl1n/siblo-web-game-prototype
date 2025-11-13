@@ -51,7 +51,7 @@ export class MenuScene extends BaseScene {
 
     // Create subtitle
     this.subtitleText = new PIXI.Text({
-      text: 'Kaalaman ang Lakas',
+      text: 'tungo sa tagumpay',
       style: {
         fontFamily: 'Arial',
         fontSize: height < 900 ? 18 : 24,

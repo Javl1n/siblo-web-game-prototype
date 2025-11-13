@@ -1,6 +1,6 @@
 # SIBLO Game Client
 
-**Kaalaman ang Lakas** (Knowledge is Strength)
+**tungo sa tagumpay**
 
 Educational RPG game for Filipino students (grades 4-10). Collect and evolve creatures called Siblons by performing well on educational quizzes.
 

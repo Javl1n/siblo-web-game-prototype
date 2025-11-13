@@ -4,7 +4,7 @@
 
 **SIBLO** is an educational RPG platform for Filipino students (grades 4-10) that gamifies learning through creature collection and evolution. This document covers the **Game Client** - the PixiJS-powered student-facing application.
 
-**Tagline**: "Kaalaman ang Lakas" (Knowledge is Strength)
+**Tagline**: "tungo sa tagumpay"
 
 ### Core Concept
 Students play an RPG where they collect and evolve creatures called **Siblons** by performing well on educational quizzes. Academic achievement directly translates to in-game power and progression.
@@ -778,7 +778,7 @@ The core gameplay loop that ties learning to gaming:
 ╔═══════════════════════════════════════════════════════╗
 ║                                                        ║
 ║                    S I B L O                          ║
-║                 Kaalaman ang Lakas                    ║
+║                 tungo sa tagumpay                     ║
 ║                                                        ║
 ║                                                        ║
 ║                  [CONTINUE]                           ║
