@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  siblo-web-game:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: siblo-web-game
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - siblo-network
+
+networks:
+  siblo-network:
+    driver: bridge
