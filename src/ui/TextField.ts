@@ -156,7 +156,7 @@ export class TextField extends PIXI.Container {
   /**
    * Cleanup
    */
-  destroy(options?: boolean | PIXI.ContainerDestroyOptions): void {
+  destroy(options?: boolean | PIXI.DestroyOptions): void {
     this.inputElement.remove();
     super.destroy(options);
   }

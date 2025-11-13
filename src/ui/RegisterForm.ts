@@ -366,7 +366,7 @@ export class RegisterForm extends PIXI.Container {
   /**
    * Cleanup
    */
-  destroy(options?: boolean | PIXI.ContainerDestroyOptions): void {
+  destroy(options?: boolean | PIXI.DestroyOptions): void {
     this.nameField.destroy();
     this.usernameField.destroy();
     this.emailField.destroy();

@@ -250,7 +250,7 @@ export class LoginForm extends PIXI.Container {
   /**
    * Cleanup
    */
-  destroy(options?: boolean | PIXI.ContainerDestroyOptions): void {
+  destroy(options?: boolean | PIXI.DestroyOptions): void {
     this.emailField.destroy();
     this.passwordField.destroy();
     super.destroy(options);
