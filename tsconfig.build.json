@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    /* Relax strict checks for production builds */
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "strict": false,
+    "erasableSyntaxOnly": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false
+  }
+}

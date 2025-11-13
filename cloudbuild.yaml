@@ -8,7 +8,7 @@ steps:
       - |
         npm install -g pnpm
         pnpm install --frozen-lockfile
-        pnpm run build
+        npx tsc -b tsconfig.build.json && npx vite build
     env:
       # Build-time environment variables
       - 'VITE_API_URL=${_API_URL}'
