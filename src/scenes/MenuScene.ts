@@ -164,7 +164,7 @@ export class MenuScene extends BaseScene {
     await this.sceneManager.loadScene(SCENE_NAMES.OVERWORLD);
   }
 
-  update(deltaTime: number): void {
+  update(_deltaTime: number): void {
     // Update input positions if window was resized
     if (this.currentView === 'login') {
       this.loginForm.updateInputPositions();

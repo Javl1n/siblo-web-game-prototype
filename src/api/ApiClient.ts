@@ -70,10 +70,10 @@ export class ApiClient {
     const timeoutId = setTimeout(() => controller.abort(), this.timeout);
 
     try {
-      const headers: HeadersInit = {
+      const headers: Record<string, string> = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        ...options.headers,
+        ...(options.headers as Record<string, string>),
       };
 
       // Add authorization header if token exists
@@ -121,19 +121,20 @@ export class ApiClient {
       }
 
       return data;
-    } catch (error) {
+    } catch (error: unknown) {
       clearTimeout(timeoutId);
 
       if (error instanceof ApiError) {
         throw error;
       }
 
-      if (error.name === 'AbortError') {
+      if (error instanceof Error && error.name === 'AbortError') {
         throw new Error('Request timeout - please check your connection');
       }
 
       // Network or other errors
-      throw new Error(`Network error: ${error.message}`);
+      const message = error instanceof Error ? error.message : 'Unknown error';
+      throw new Error(`Network error: ${message}`);
     }
   }
 

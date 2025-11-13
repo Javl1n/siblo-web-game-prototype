@@ -53,7 +53,7 @@ export class AnimatedPlayer {
    * @param screenWidth - Screen width for bounds checking
    * @param screenHeight - Screen height for bounds checking
    */
-  update(deltaTime: number, keys: { [key: string]: boolean }, screenWidth: number, screenHeight: number): void {
+  update(_deltaTime: number, keys: { [key: string]: boolean }, screenWidth: number, screenHeight: number): void {
     let moving = false;
 
     // Movement

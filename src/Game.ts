@@ -7,7 +7,7 @@
 
 import * as PIXI from 'pixi.js';
 import { SceneManager } from './systems/SceneManager';
-import { ENV, validateEnv } from './config/env';
+import { validateEnv } from './config/env';
 import { SCENE_NAMES } from './config/constants';
 import { useAuthStore } from './state/authStore';
 

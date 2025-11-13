@@ -11,12 +11,12 @@ import { GAME_CONFIG } from '../config/constants';
 import { useAuthStore } from '../state/authStore';
 
 export class LoginForm extends PIXI.Container {
-  private emailField: TextField;
-  private passwordField: TextField;
-  private loginButton: Button;
-  private registerButton: Button;
-  private errorText: PIXI.Text;
-  private titleText: PIXI.Text;
+  private emailField!: TextField;
+  private passwordField!: TextField;
+  private loginButton!: Button;
+  private registerButton!: Button;
+  private errorText!: PIXI.Text;
+  private titleText!: PIXI.Text;
   private app: PIXI.Application;
   private onSuccess: () => void;
   private onSwitchToRegister: () => void;

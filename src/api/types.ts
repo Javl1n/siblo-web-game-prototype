@@ -267,12 +267,17 @@ export interface ApiErrorResponse {
 }
 
 export class ApiError extends Error {
+  public statusCode: number;
+  public errors?: ValidationErrors;
+
   constructor(
     message: string,
-    public statusCode: number,
-    public errors?: ValidationErrors
+    statusCode: number,
+    errors?: ValidationErrors
   ) {
     super(message);
     this.name = 'ApiError';
+    this.statusCode = statusCode;
+    this.errors = errors;
   }
 }

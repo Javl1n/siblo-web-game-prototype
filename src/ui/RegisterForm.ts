@@ -12,16 +12,16 @@ import { useAuthStore } from '../state/authStore';
 import type { RegisterRequest } from '../api/types';
 
 export class RegisterForm extends PIXI.Container {
-  private nameField: TextField;
-  private usernameField: TextField;
-  private emailField: TextField;
-  private passwordField: TextField;
-  private passwordConfirmField: TextField;
-  private trainerNameField: TextField;
-  private registerButton: Button;
-  private backButton: Button;
-  private errorText: PIXI.Text;
-  private titleText: PIXI.Text;
+  private nameField!: TextField;
+  private usernameField!: TextField;
+  private emailField!: TextField;
+  private passwordField!: TextField;
+  private passwordConfirmField!: TextField;
+  private trainerNameField!: TextField;
+  private registerButton!: Button;
+  private backButton!: Button;
+  private errorText!: PIXI.Text;
+  private titleText!: PIXI.Text;
   private app: PIXI.Application;
   private onSuccess: () => void;
   private onBack: () => void;
@@ -191,7 +191,7 @@ export class RegisterForm extends PIXI.Container {
     this.addChild(this.backButton);
   }
 
-  private addFieldWithLabel(label: string, fieldName: string, yPos: number): void {
+  private addFieldWithLabel(label: string, _fieldName: string, yPos: number): void {
     const fieldLabel = new PIXI.Text({
       text: label,
       style: {

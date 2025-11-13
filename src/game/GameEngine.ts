@@ -155,7 +155,7 @@ export class GameEngine {
 
     try {
       // Load the grass tileset texture and JSON data
-      const [baseTexture, grassData] = await Promise.all([
+      const [baseTexture] = await Promise.all([
         PIXI.Assets.load('/assets/grass/Grass-01.png'),
         fetch('/assets/grass/grass.json').then(res => res.json())
       ]);
@@ -249,7 +249,7 @@ export class GameEngine {
     this.currentAnimation = name;
   }
 
-  public update(deltaTime: number): void {
+  public update(_deltaTime: number): void {
     if (!this.state.isRunning || !this.playerSprite || !this.isInitialized) return;
 
     // Check if any movement key is being held

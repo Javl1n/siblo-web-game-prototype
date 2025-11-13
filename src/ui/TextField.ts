@@ -24,7 +24,6 @@ export class TextField extends PIXI.Container {
   private background: PIXI.Graphics;
   private inputElement: HTMLInputElement;
   private config: Required<TextFieldConfig>;
-  private isFocused: boolean = false;
 
   constructor(config: TextFieldConfig = {}) {
     super();
@@ -73,12 +72,10 @@ export class TextField extends PIXI.Container {
 
     // Event listeners
     input.addEventListener('focus', () => {
-      this.isFocused = true;
       this.drawBackground(GAME_CONFIG.COLORS.SECONDARY);
     });
 
     input.addEventListener('blur', () => {
-      this.isFocused = false;
       this.drawBackground(this.config.borderColor);
     });
 
