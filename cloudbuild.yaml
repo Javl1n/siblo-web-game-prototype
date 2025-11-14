@@ -34,7 +34,7 @@ steps:
 
 # Substitutions (default values - override these in Cloud Build trigger)
 substitutions:
-  _API_URL: 'https://siblo-web-prototype-main-n0hwlc.laravel.cloud/'
+  _API_URL: 'https://siblo-web-prototype-main-n0hwlc.laravel.cloud'
   _API_TIMEOUT: '10000'
   _REVERB_APP_KEY: 'your-reverb-key-here'
   _REVERB_HOST: 'api.siblo.com'
